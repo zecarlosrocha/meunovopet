@@ -1,11 +1,35 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <title>Pet - Home</title>
+    <link rel="stylesheet" href="{% static 'css/estilos.css' %}">
 </head>
 <body>
-    <h1>Pet - Home</h1>
-    <h2>{{ curso }}</h2>
+    <div style="text-align: center;">
+        <h1>Pet - Home</h1>
+        <img src="{% static 'images/cao-1.jpg' %}"/>
+        <table style="width:100%">
+            <tr>
+                <th>Nome</th>
+                <th>Raça</th>
+                <th>Idade</th>
+                <th>Doador</th>
+                <th>Email do doador</th>
+            </tr>
+            {% for animal in animais %}
+            <tr>
+                <td><a href="{% url 'animal' animal.id %}">{{ animal.nome }}</a></td>
+                <td>{{ animal.raca.nome }}</td>
+                <td>{{ animal.idade }}</td>
+                <td>{{ animal.entidade.nome }}</td>
+                <td>{{ animal.entidade.email }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+        <button onclick="teste();">Confirmar</button>
+    </div>
+    <script type="text/javascript" src="{% static 'js/script.js' %}"></script>
 </body>
 </html>

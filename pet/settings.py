@@ -27,7 +27,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-_t+p^bt5mle8@9ppq=8m972tz+#k5=c%4q@3!u_nm*jeuz*0*k'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+# DEBUG = TRUE = MODO DESENVOLVIMENTO
+# DEBUG = FALSE = MODO PRODUÇÃO
+DEBUG = False
 
 ALLOWED_HOSTS = ['*']
 
@@ -46,6 +48,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -123,15 +126,15 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
-STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATIC_URL = '/static/'                                 # USADO DURANTE O DESENVOLVIMENTO
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')     # USADO DURANTE A PRODUÇÃO
 
-MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+#MEDIA_URL = '/media/'                                   # USADO DURANTE O DESENVOLVIMENTO
+#MEDIA_ROOT = os.path.join(BASE_DIR, 'media')            # USADO DURANTE A PRODUÇÃO
 
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'static'),
-]
+#STATICFILES_DIRS = [
+#    os.path.join(BASE_DIR, 'static'),
+#]
 
 
 # Default primary key field type
@@ -140,3 +143,5 @@ STATICFILES_DIRS = [
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 django_heroku.settings(locals())
+
+LOGOUT_REDIRECT_URL = 'index'
