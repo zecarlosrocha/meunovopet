@@ -1,6 +1,6 @@
 body {
-    background-color: #341256;
-    color: #ffffff;
+    background-color: #81d4fa;
+    color: #000000;
 }
 
 table, th, td {
@@ -9,5 +9,5 @@ table, th, td {
 
 a {
     text-decoration: none;
-    color: #ffffff;
+    color: #000000;
 }
